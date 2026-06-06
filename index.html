@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn C Programming</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><span class="3">{</span> Learn C Programming <span class="code-bracket">}</span></h1>
+            <p>Master the fundamentals of C programming with interactive examples</p>
+        </div>
+    </header>
+
+    <nav class="progress-nav">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-text" id="progressText">0% Complete</span>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="learning-section" data-section="intro">
+            <div class="section-header" onclick="toggleSection('intro')">
+                <h2><span class="icon">📚</span> Introduction to C</h2>
+                <span class="toggle-arrow">▼</span>
+            </div>
+            <div class="section-content">
+                <p>C is a powerful, general-purpose programming language that has influenced many modern languages.</p>
+                <div class="highlight-box">
+                    <h3>Why Learn C?</h3>
+                    <ul>
+                        <li>Foundation for many other languages</li>
+                        <li>System programming and embedded systems</li>
+                        <li>High performance and efficiency</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="learning-section" data-section="variables">
+            <div class="section-header" onclick="toggleSection('variables')">
+                <h2><span class="icon">📦</span> Variables & Data Types</h2>
+                <span class="toggle-arrow">▼</span>
+            </div>
+            <div class="section-content">
+                <p>Variables store data values. C has several basic data types:</p>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        <span>Example: Variable Declaration</span>
+                        <button class="run-btn" onclick="runCode('variables')">Run Code</button>
+                    </div>
+                    <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int age = 25;
+    float height = 5.9;
+    char grade = 'A';
+    
+    printf("Age: %d\n", age);
+    printf("Height: %.1f\n", height);
+    printf("Grade: %c\n", grade);
+    
+    return 0;
+}</code></pre>
+                </div>
+                
+                <div class="output-box" id="output-variables" style="display: none;">
+                    <h4>Output:</h4>
+                    <pre></pre>
+                </div>
+
+                <div class="quiz-box">
+                    <h3>Quick Quiz</h3>
+                    <div class="question">
+                        <p>Which data type is used to store decimal numbers?</p>
+                        <div class="options">
+                            <label><input type="radio" name="q1" value="int"> int</label>
+                            <label><input type="radio" name="q1" value="float"> float</label>
+                            <label><input type="radio" name="q1" value="char"> char</label>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer('q1', 'float')">Check Answer</button>
+                        <div class="result" id="result-q1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="learning-section" data-section="loops">
+            <div class="section-header" onclick="toggleSection('loops')">
+                <h2><span class="icon">🔄</span> Loops</h2>
+                <span class="toggle-arrow">▼</span>
+            </div>
+            <div class="section-content">
+                <p>Loops allow you to repeat code multiple times. C has three main types of loops:</p>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        <span>Example: For Loop</span>
+                        <button class="run-btn" onclick="runCode('loops')">Run Code</button>
+                    </div>
+                    <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Counting from 1 to 5:\n");
+    
+    for(int i = 1; i <= 5; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    
+    return 0;
+}</code></pre>
+                </div>
+                
+                <div class="output-box" id="output-loops" style="display: none;">
+                    <h4>Output:</h4>
+                    <pre></pre>
+                </div>
+
+                <div class="quiz-box">
+                    <h3>Quick Quiz</h3>
+                    <div class="question">
+                        <p>What will this loop print? <code>for(int i = 0; i < 3; i++)</code></p>
+                        <div class="options">
+                            <label><input type="radio" name="q2" value="0 1 2"> 0 1 2</label>
+                            <label><input type="radio" name="q2" value="1 2 3"> 1 2 3</label>
+                            <label><input type="radio" name="q2" value="0 1 2 3"> 0 1 2 3</label>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer('q2', '0 1 2')">Check Answer</button>
+                        <div class="result" id="result-q2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="learning-section" data-section="functions">
+            <div class="section-header" onclick="toggleSection('functions')">
+                <h2><span class="icon">⚙️</span> Functions</h2>
+                <span class="toggle-arrow">▼</span>
+            </div>
+            <div class="section-content">
+                <p>Functions are reusable blocks of code that perform specific tasks:</p>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        <span>Example: Function Definition</span>
+                        <button class="run-btn" onclick="runCode('functions')">Run Code</button>
+                    </div>
+                    <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(10, 20);
+    printf("10 + 20 = %d\n", result);
+    
+    printf("5 + 15 = %d\n", add(5, 15));
+    
+    return 0;
+}</code></pre>
+                </div>
+                
+                <div class="output-box" id="output-functions" style="display: none;">
+                    <h4>Output:</h4>
+                    <pre></pre>
+                </div>
+
+                <div class="quiz-box">
+                    <h3>Quick Quiz</h3>
+                    <div class="question">
+                        <p>What does the 'return' statement do in a function?</p>
+                        <div class="options">
+                            <label><input type="radio" name="q3" value="ends"> Ends the program</label>
+                            <label><input type="radio" name="q3" value="returns"> Returns a value to the caller</label>
+                            <label><input type="radio" name="q3" value="loops"> Creates a loop</label>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer('q3', 'returns')">Check Answer</button>
+                        <div class="result" id="result-q3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Keep coding and learning! 🚀</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
